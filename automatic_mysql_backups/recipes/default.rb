@@ -1,3 +1,8 @@
+# NOTE: the instance that will access S3 will need a role with the proper policy
+# to enable access to S3.
+# In AWS console, cf IAM > Roles. Select a role associated to your instance. Then add an inline policy
+# with the proper access details. The ARN it will ask is the name of the target bucket.
+
 if node[:opsworks][:instance][:hostname] == 'rails-app1' and node[:s3_backup] != nil
 
   template "/srv/www/backup_to_s3.sh" do
